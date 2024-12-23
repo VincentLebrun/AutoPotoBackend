@@ -1,11 +1,9 @@
-FROM golang:1.24-alpine
+FROM golang:1.23.4-alpine
 
 WORKDIR /app
 
-# Install dependencies in a single RUN command to minimize layers
 RUN apk update && apk add libc-dev gcc make && rm -rf /var/cache/apk/*
 
-# Copy go.mod and go.sum and download dependencies
 COPY go.mod go.sum ./
 
 RUN go mod download && go mod verify
