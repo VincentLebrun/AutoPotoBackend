@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apk update && apk add libc-dev gcc make && rm -rf /var/cache/apk/*
 
-COPY go.mod go.sum ./
+COPY go.mod ./
 
 RUN go mod download && go mod verify
 
